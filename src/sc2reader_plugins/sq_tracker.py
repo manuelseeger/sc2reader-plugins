@@ -34,7 +34,7 @@ class SQTracker(BasePlugin):
         super().__init__()
         self.income_rates = defaultdict(float)
         self.unspent_resources = defaultdict(float)
-        self.player_is_left = defaultdict(bool)
+        self.player_has_left = defaultdict(bool)
 
     def handleInitGame(self, event: "Event", replay: "Replay"):
         player: "Player"
@@ -43,11 +43,11 @@ class SQTracker(BasePlugin):
             player.seconds_played = replay.length.seconds
             self.income_rates[player.pid] = []
             self.unspent_resources[player.pid] = []
-            self.player_is_left[player.pid] = False
+            self.player_has_left[player.pid] = False
 
     def handlePlayerStatsEvent(self, event: "PlayerStatsEvent", replay: "Replay"):
         player: "Player" = event.player
-        if player.pid == 16 or self.player_is_left[player.pid]:
+        if player.pid == 16 or self.player_has_left[player.pid]:
             return
 
         income_rate = event.minerals_collection_rate + event.vespene_collection_rate
@@ -60,7 +60,7 @@ class SQTracker(BasePlugin):
     def handlePlayerLeaveEvent(self, event: "Event", replay: "Replay"):
         player: "Player" = event.player
         player.seconds_played = event.second
-        self.player_is_left[player.pid] = True
+        self.player_has_left[player.pid] = True
 
     def handleEndGame(self, event: "Event", replay: "Replay"):
         player: "Player"
