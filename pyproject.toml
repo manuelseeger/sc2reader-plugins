@@ -1,7 +1,7 @@
 [project]
 name = "sc2reader-plugins"
 version = "0.1.0"
-description = "Add your description here"
+description = "Nice plugins for sc2reader"
 authors = [
     { name = "NumberPigeon", email = "number108@foxmail.com" }
 ]
