@@ -3,6 +3,7 @@ from sc2reader_plugins.base_plugin import BasePlugin
 from sc2reader_plugins.event_second_corrector import EventSecondCorrector
 from sc2reader_plugins.player_stats_tracker import PlayerStatsTracker
 from sc2reader_plugins.sq_tracker import SQTracker
+from sc2reader_plugins.worker_tracker import WorkerTracker
 
 __all__ = [
     "APMTracker",
@@ -10,4 +11,5 @@ __all__ = [
     "EventSecondCorrector",
     "PlayerStatsTracker",
     "SQTracker",
+    "WorkerTracker",
 ]
