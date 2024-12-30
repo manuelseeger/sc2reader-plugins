@@ -61,7 +61,9 @@ def test_1v1_instant_leave():
         plugins=[EventSecondCorrector(), ContextLoader(), APMTracker()]
     )
     # game ends before second 1 but one player has an action event
-    replay = factory.load_replay("tests/replays/1v1_APM_instant_leave.SC2Replay", engine=engine)
+    replay = factory.load_replay(
+        "tests/replays/1v1_APM_instant_leave.SC2Replay", engine=engine
+    )
     p1, p2 = replay.players
     assert p1.official_apm == 0
     assert p2.official_apm > 0
@@ -69,6 +71,7 @@ def test_1v1_instant_leave():
     assert len(p2.apm) > 0
     assert p1.avg_apm == 0
     assert p2.avg_apm == 0
+
 
 def test_2v2():
     factory = sc2reader.factories.SC2Factory()
