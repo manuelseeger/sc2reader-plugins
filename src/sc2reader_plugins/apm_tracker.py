@@ -80,7 +80,7 @@ class APMTracker(BasePlugin):
         for player in replay.players:
             if player not in self.players:
                 continue
-            if len(player.apm.keys()) > 0:
+            if len(player.apm.keys()) > 0 and player.seconds_played > 0:
                 player.avg_apm = (
                     sum(player.aps.values()) / float(player.seconds_played) * 60
                 )
