@@ -20,3 +20,6 @@ repos:
     hooks:
     -   id: black
         exclude: alembic/
+
+autoupdate:
+  schedule: "quarterly"
