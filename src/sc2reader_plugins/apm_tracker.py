@@ -40,9 +40,9 @@ class APMTracker(BasePlugin):
                 # if the pid is valid
                 try:
                     # pid and team id starts from 1, but index starts from 0
-                    p_index = ( player.pid if not archon_mode else player.team_id ) -1
+                    p_index = (player.pid if not archon_mode else player.team_id) - 1
                     player.official_apm = gamemetadata["Players"][p_index]["APM"]
-                except ( KeyError, IndexError ):
+                except (KeyError, IndexError):
                     player.official_apm = None
         # build self-calculated apm and aps
         for player in replay.players:
