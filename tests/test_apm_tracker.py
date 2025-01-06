@@ -92,3 +92,28 @@ def test_2v2():
     assert p2.avg_apm > 10
     assert p3.avg_apm > 10
     assert p4.avg_apm > 10
+
+
+def test_2v2_archon_mode():
+    factory = sc2reader.factories.SC2Factory()
+    engine = sc2reader.engine.GameEngine(
+        plugins=[EventSecondCorrector(), ContextLoader(), APMTracker()]
+    )
+    replay = factory.load_replay("tests/replays/2v2_archon_mode.SC2Replay", engine=engine)
+    t1, t2 = replay.teams
+    t1p1, t1p2 = t1.players
+    t2p1, t2p2 = t2.players
+    assert t1p1.official_apm > 10
+    assert t1p2.official_apm > 10
+    assert t2p1.official_apm > 10
+    assert t2p2.official_apm > 10
+    assert t1p1.official_apm == t1p2.official_apm
+    assert t2p1.official_apm == t2p2.official_apm
+    assert len(t1p1.apm) > 0
+    assert len(t1p2.apm) > 0
+    assert len(t2p1.apm) > 0
+    assert len(t2p2.apm) > 0
+    assert t1p1.avg_apm > 10
+    assert t1p2.avg_apm > 10
+    assert t2p1.avg_apm > 10
+    assert t2p2.avg_apm > 10
