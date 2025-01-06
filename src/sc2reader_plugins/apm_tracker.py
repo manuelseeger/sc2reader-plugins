@@ -32,7 +32,7 @@ class APMTracker(BasePlugin):
             for player in replay.players:
                 player.official_apm = None
         else:
-            archon_mode = len([p for p in replay.players if p.archon_leader_id is not None]) > 0
+            archon_mode = any(p.archon_leader_id is not None for p in replay.players)
 
             for player in replay.players:
                 # players have pid starting from 1, and there may be observers that
