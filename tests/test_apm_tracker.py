@@ -99,7 +99,9 @@ def test_2v2_archon_mode():
     engine = sc2reader.engine.GameEngine(
         plugins=[EventSecondCorrector(), ContextLoader(), APMTracker()]
     )
-    replay = factory.load_replay("tests/replays/2v2_archon_mode.SC2Replay", engine=engine)
+    replay = factory.load_replay(
+        "tests/replays/2v2_archon_mode.SC2Replay", engine=engine
+    )
     t1, t2 = replay.teams
     t1p1, t1p2 = t1.players
     t2p1, t2p2 = t2.players
